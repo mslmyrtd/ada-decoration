@@ -12,6 +12,7 @@
 
 - #### React.js
 - #### TypeScript
+- #### Vitejs
 - #### Axios library
 - #### AuthO
 - #### Fushion Chart
