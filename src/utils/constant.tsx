@@ -1,6 +1,10 @@
 import React from 'react'
 import { GiCompass, GiDiamondHard, GiStabbedNote } from 'react-icons/gi'
 import { ILinks, IServices } from '../types/globaltypes.types'
+import { AiOutlineHome } from "react-icons/ai";
+import { MdProductionQuantityLimits } from "react-icons/md/"
+import { GrStatusInfo } from "react-icons/gr"
+import { CgPlayListCheck } from "react-icons/cg"
 
 
 export const links: ILinks[] = [
@@ -8,16 +12,19 @@ export const links: ILinks[] = [
     id: 1,
     text: 'home',
     url: '/',
+    icon: <AiOutlineHome />
   },
   {
     id: 2,
     text: 'about',
     url: '/about',
+    icon: <GrStatusInfo />
   },
   {
     id: 3,
     text: 'products',
     url: '/products',
+    icon: <MdProductionQuantityLimits />
   },
 ]
 
