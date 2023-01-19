@@ -12,12 +12,13 @@
 
 - #### React.js
 - #### TypeScript
+- #### Vite
 - #### Axios library
 - #### AuthO
-- #### Fushion Chart
+- #### 
 - #### Styled-Component
 - #### React-İcons
-- #### Github-Api
+- ####
 - #### React Router Dom
 <details><summary><b>Project Description</b></summary><br>
   <p>Hello everybody,
