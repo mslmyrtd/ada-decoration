@@ -1,22 +1,34 @@
 import React from 'react'
 import logo from '../assets/logo.svg'
 import { Link } from 'react-router-dom'
-import { FaTimes } from 'react-icons/fa'
+import { FaTimes, } from 'react-icons/fa'
 import { links } from '../utils/constant'
 import styled from 'styled-components'
 import CartButtons from './CartButtons'
 
 const Sidebar = () => {
-    const isOpen = true
-    return <SidebarContainer>
-        <aside className={`${isOpen ? "sidebar show-sidebar" : "show-sidebar"}`}>
-            <div className="sidebar-header">
-                <img src={logo} className="logo" alt="comfy sloth" />
-                <button className='close-btn' type='button'><FaTimes />
-                </button>
-            </div>
-        </aside>
-    </SidebarContainer>
+  const isOpen = true
+  return <SidebarContainer>
+    <aside className={`${isOpen ? "sidebar show-sidebar" : "sidebar"}`}>
+      <div className="sidebar-header">
+        <img src={logo} className="logo" alt="comfy sloth" />
+        <button className='close-btn' type='button'><FaTimes />
+        </button>
+      </div>
+      <ul className="links">
+        {links.map((link): any => {
+          const { id, text, url, icon } = link
+          return <li key={id}>
+            <Link to={url}>{icon} {text}</Link>
+          </li>
+        })}
+        <li >
+          <Link to="/checkout">checkout</Link>
+        </li>
+      </ul>
+      <CartButtons />
+    </aside>
+  </SidebarContainer>
 }
 
 const SidebarContainer = styled.div`
