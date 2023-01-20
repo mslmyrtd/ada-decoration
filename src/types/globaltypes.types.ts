@@ -10,3 +10,6 @@ export interface IServices {
   title: string
   text: string
 }
+export interface InputProviderProps {
+  children: React.ReactNode
+}
