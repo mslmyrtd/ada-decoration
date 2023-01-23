@@ -1,11 +1,12 @@
 import React from 'react'
-
-const Home = () => {
-    return (
-        <div>
-
-        </div>
-    )
+import { FeaturedProducts, Hero, Services, Contact } from '../components'
+const HomePage = () => {
+    return <main>
+        <Hero />
+        <FeaturedProducts />
+        <Services />
+        <Contact />
+    </main>
 }
 
-export default Home
+export default HomePage
