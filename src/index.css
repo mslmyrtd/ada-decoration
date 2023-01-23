@@ -130,6 +130,31 @@ p {
     line-height: 1;
   }
 }
+/*  global classes */
+
+/* section */
+.section {
+  padding: 5rem 0;
+}
+.section-center {
+  width: 90vw;
+  margin: 0 auto;
+  max-width: var(--max-width);
+}
+
+@media screen and (min-width: 992px) {
+  .section-center {
+    width: 95vw;
+  }
+}
+.text-center {
+  text-align: center;
+}
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
 .btn {
   text-transform: uppercase;
   background: var(--clr-primary-5);
@@ -149,7 +174,21 @@ p {
   color: var(--clr-primary-1);
   background: var(--clr-primary-7);
 }
+.title {
+  text-align: center;
+}
+.title .underline {
+  width: 6rem;
+  height: 0.25rem;
+  background: #49a6e9;
+  background: var(--clr-primary-5);
+  margin-left: auto;
+  margin-right: auto;
+}
 .page-100 {
   min-height: calc(100vh - 10rem);
   padding: 5rem 0;
+}
+.page {
+  min-height: calc(100vh - (20vh + 10rem));
 }
