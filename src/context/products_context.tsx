@@ -5,8 +5,8 @@ import { InputProviderProps, ProductActionKind } from '../types/globaltypes.type
 
 type InitialStateType = {
     isSidebarOpen: boolean;
-    openSidebar: Function
-    closeSidebar: (event: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void;
+    openSidebar: (event: MouseEvent<HTMLButtonElement | HTMLAnchorElement | HTMLButtonElement>) => void;
+    closeSidebar: (event: MouseEvent<HTMLButtonElement | HTMLAnchorElement | HTMLButtonElement>) => void;
 }
 const initialState = {
     isSidebarOpen: false,
