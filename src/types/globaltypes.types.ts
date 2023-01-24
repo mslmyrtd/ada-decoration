@@ -1,5 +1,3 @@
-import { SIDEBAR_CLOSE, SIDEBAR_OPEN } from '../actions'
-
 export interface ILinks {
   id: number
   text: string
@@ -19,6 +17,9 @@ export interface InputProviderProps {
 export enum ProductActionKind {
   SIDEBAR_CLOSE = 'SIDEBAR_CLOSE',
   SIDEBAR_OPEN = 'SIDEBAR_OPEN',
+  GET_PRODUCTS_BEGIN = 'GET_PRODUCTS_BEGIN',
+  GET_PRODUCTS_SUCCESS = 'GET_PRODUCTS_SUCCESS',
+  GET_PRODUCTS_ERROR = 'GET_PRODUCTS_ERROR',
 }
 export interface ProductAction {
   type: ProductActionKind
