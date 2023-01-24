@@ -1,7 +1,8 @@
-import React, { useContext, useReducer, MouseEvent } from 'react'
+import React, { useContext, useReducer, MouseEvent, useEffect } from 'react'
 import reducer from '../reducers/products_reducer'
-
+import { products_url as url } from '../utils/constants'
 import { InputProviderProps, ProductActionKind } from '../types/globaltypes.types'
+import axios from 'axios'
 
 type InitialStateType = {
     isSidebarOpen: boolean;
@@ -11,7 +12,11 @@ type InitialStateType = {
 const initialState = {
     isSidebarOpen: false,
     openSidebar: () => null,
-    closeSidebar: () => null
+    closeSidebar: () => null,
+    products_loading: false,
+    products_error: false,
+    products: [],
+    featured_product: [],
 }
 
 const ProductsContext = React.createContext<InitialStateType>(initialState);
@@ -24,6 +29,14 @@ export const ProductsProvider = ({ children }: InputProviderProps) => {
     const closeSidebar = () => {
         dispatch({ type: ProductActionKind.SIDEBAR_CLOSE })
     }
+    const fetchProducts = async (url: string) => {
+        dispatch({ type: ProductActionKind.GET_PRODUCTS_BEGIN })
+        const response = await axios(url)
+        console.log(response);
+    }
+    useEffect(() => {
+        fetchProducts(url)
+    }, [])
     return (
         <ProductsContext.Provider value={{ ...state, openSidebar, closeSidebar }}>
             {children}
