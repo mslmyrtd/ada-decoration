@@ -1,25 +1,25 @@
 import styled from 'styled-components'
-import { services } from '../utils/constant'
+import { services } from '../utils/constants'
 
 const Services = () => {
-    return <Wrapper>
-        <div className="section-center">
-            <article className='header'>
-                <h3>custom furniture <br />
-                    built only for </h3>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Praesentium, possimus ullam quos repudiandae provident similique ea natus quaerat atque? Voluptatum sed dolores dolorem quaerat quisquam accusantium excepturi consequatur animi officiis.</p>
-            </article>
-            <div className="services-center">
-                {services.map(({ id, icon, title, text }) => {
-                    return <article key={id} className="service">
-                        <span className='icon'>{icon}</span>
-                        <h4>{title}</h4>
-                        <p>{text}</p>
-                    </article>
-                })}
-            </div>
-        </div>
-    </Wrapper>
+  return <Wrapper>
+    <div className="section-center">
+      <article className='header'>
+        <h3>custom furniture <br />
+          built only for </h3>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Praesentium, possimus ullam quos repudiandae provident similique ea natus quaerat atque? Voluptatum sed dolores dolorem quaerat quisquam accusantium excepturi consequatur animi officiis.</p>
+      </article>
+      <div className="services-center">
+        {services.map(({ id, icon, title, text }) => {
+          return <article key={id} className="service">
+            <span className='icon'>{icon}</span>
+            <h4>{title}</h4>
+            <p>{text}</p>
+          </article>
+        })}
+      </div>
+    </div>
+  </Wrapper>
 }
 
 const Wrapper = styled.section`
