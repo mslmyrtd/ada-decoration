@@ -31,8 +31,14 @@ export const ProductsProvider = ({ children }: InputProviderProps) => {
     }
     const fetchProducts = async (url: string) => {
         dispatch({ type: ProductActionKind.GET_PRODUCTS_BEGIN })
-        const response = await axios(url)
-        console.log(response);
+        try {
+            const response = await axios(url)
+            const products = response.data
+            dispatch({ type: ProductActionKind.GET_PRODUCTS_SUCCESS, payload: products })
+        } catch (error) {
+            dispatch({ type: ProductActionKind.GET_PRODUCTS_ERROR })
+
+        }
     }
     useEffect(() => {
         fetchProducts(url)
