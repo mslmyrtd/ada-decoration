@@ -5,18 +5,23 @@ import { InputProviderProps, ProductActionKind } from '../types/globaltypes.type
 import axios from 'axios'
 
 type InitialStateType = {
-    isSidebarOpen: boolean;
     openSidebar: (event: MouseEvent<HTMLButtonElement | HTMLAnchorElement | HTMLButtonElement>) => void;
     closeSidebar: (event: MouseEvent<HTMLButtonElement | HTMLAnchorElement | HTMLButtonElement>) => void;
+    products_loading: boolean;
+    featured_products: Array<any>
+    products_error: boolean
+    products: Array<any>
+    isSidebarOpen: boolean;
 }
+
 const initialState = {
     isSidebarOpen: false,
     openSidebar: () => null,
     closeSidebar: () => null,
     products_loading: false,
+    featured_products: [],
     products_error: false,
-    products: [],
-    featured_product: [],
+    products: []
 }
 
 const ProductsContext = React.createContext<InitialStateType>(initialState);
