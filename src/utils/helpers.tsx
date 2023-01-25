@@ -6,4 +6,3 @@ export const formatPrice = (number: number) => {
     return newNumber
 }
 
-export const getUniqueValues = () => { }
