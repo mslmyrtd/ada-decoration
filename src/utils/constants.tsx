@@ -51,4 +51,4 @@ export const services: IServices[] = [
 
 export const products_url = 'https://course-api.com/react-store-products'
 
-export const single_product_url = `https://course-api.com/react-store-single-product?id=2`
+export const single_product_url = `https://course-api.com/react-store-single-product?id=`

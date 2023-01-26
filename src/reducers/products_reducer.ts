@@ -32,12 +32,13 @@ const products_reducer = (state: ProductState, action: ProductAction) => {
     case ProductActionKind.GET_SINGLE_PRODUCT_SUCCESS:
       return {
         ...state,
+        single_product_loading: false,
         single_product: payload,
       }
     case ProductActionKind.GET_SINGLE_PRODUCT_ERROR:
       return {
         ...state,
-        single_product_loading: true,
+        single_product_loading: false,
         single_product_error: true,
       }
   }
