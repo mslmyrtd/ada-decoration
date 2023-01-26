@@ -15,6 +15,7 @@ type InitialStateType = {
     single_product_loading: boolean
     single_product_error: boolean
     single_product: null | object
+    fetchSingleProduct: Function
 }
 
 const initialState = {
@@ -27,7 +28,8 @@ const initialState = {
     products: [],
     single_product_loading: false,
     single_product_error: false,
-    single_product: null
+    single_product: null,
+    fetchSingleProduct: () => null
 }
 
 const ProductsContext = React.createContext<InitialStateType>(initialState);
@@ -67,7 +69,7 @@ export const ProductsProvider = ({ children }: InputProviderProps) => {
         fetchProducts(url)
     }, [])
     return (
-        <ProductsContext.Provider value={{ ...state, openSidebar, closeSidebar }}>
+        <ProductsContext.Provider value={{ ...state, openSidebar, closeSidebar, fetchSingleProduct }}>
             {children}
         </ProductsContext.Provider>
     )
