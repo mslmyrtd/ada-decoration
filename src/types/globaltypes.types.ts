@@ -26,5 +26,5 @@ export enum ProductActionKind {
 }
 export interface ProductAction {
   type: ProductActionKind
-  payload?: number | string | Record<string, unknown>[]
+  payload?: number | string | Record<string | number, unknown>[]
 }
