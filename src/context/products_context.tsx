@@ -1,21 +1,34 @@
-import React, { useContext, useReducer, MouseEvent, useEffect } from 'react'
+import React, { useContext, useReducer, MouseEvent, useEffect, } from 'react'
 import reducer from '../reducers/products_reducer'
 import { products_url as url } from '../utils/constants'
 import { InputProviderProps, ProductActionKind } from '../types/globaltypes.types'
 import axios from 'axios'
 
-type InitialStateType = {
+interface IObject {
+    category: string,
+    colors: Array<string>,
+    company: string,
+    description: string,
+    id: string,
+    image: string,
+    name: string,
+    price: number,
+    shipping: boolean,
+    featured: boolean,
+}
+
+export type InitialStateType = {
     openSidebar: (event: MouseEvent<HTMLButtonElement | HTMLAnchorElement | HTMLButtonElement>) => void;
     closeSidebar: (event: MouseEvent<HTMLButtonElement | HTMLAnchorElement | HTMLButtonElement>) => void;
-    products_loading: boolean;
-    featured_products: Record<string, unknown>[]
-    products_error: boolean
-    products: Record<string, unknown>[]
     isSidebarOpen: boolean;
+    products_loading: boolean;
+    featured_products: Array<any>
+    products_error: boolean
+    products: IObject[]
     single_product_loading: boolean
     single_product_error: boolean
-    single_product: null | object
-    fetchSingleProduct: Function
+    single_product: any,
+    fetchSingleProduct: (url: string) => Promise<void>
 }
 
 const initialState = {
@@ -28,8 +41,8 @@ const initialState = {
     products: [],
     single_product_loading: false,
     single_product_error: false,
-    single_product: null,
-    fetchSingleProduct: () => null
+    single_product: {},
+    fetchSingleProduct: async (url: string) => { }
 }
 
 const ProductsContext = React.createContext<InitialStateType>(initialState);
@@ -46,27 +59,26 @@ export const ProductsProvider = ({ children }: InputProviderProps) => {
         dispatch({ type: ProductActionKind.GET_PRODUCTS_BEGIN })
         try {
             const response = await axios(url)
-            const products = response.data as Record<string, unknown>[]
+            const products = (response.data)
             dispatch({ type: ProductActionKind.GET_PRODUCTS_SUCCESS, payload: products })
         } catch (error) {
             dispatch({ type: ProductActionKind.GET_PRODUCTS_ERROR })
 
         }
     }
-
     const fetchSingleProduct = async (url: string) => {
         dispatch({ type: ProductActionKind.GET_SINGLE_PRODUCT_BEGIN })
         try {
             const response = await axios(url)
-            const singleProduct = response.data;
+            const singleProduct = (response.data);
             dispatch({ type: ProductActionKind.GET_SINGLE_PRODUCT_SUCCESS, payload: singleProduct })
         } catch (error) {
             dispatch({ type: ProductActionKind.GET_SINGLE_PRODUCT_ERROR })
         }
-
     }
     useEffect(() => {
         fetchProducts(url)
+        fetchSingleProduct(url)
     }, [])
     return (
         <ProductsContext.Provider value={{ ...state, openSidebar, closeSidebar, fetchSingleProduct }}>
@@ -76,5 +88,13 @@ export const ProductsProvider = ({ children }: InputProviderProps) => {
 }
 // custom Context
 export const useProductsContext = () => {
-    return useContext(ProductsContext)
+    const productsContext = useContext(ProductsContext)
+    if (!productsContext) {
+        throw new Error(
+            "null"
+        );
+    }
+
+    return productsContext;
 }
+
