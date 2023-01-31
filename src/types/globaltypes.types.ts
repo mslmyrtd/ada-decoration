@@ -14,6 +14,28 @@ export interface InputProviderProps {
   children: React.ReactNode
 }
 
+export interface IImages {
+  id: string
+  width: number
+  heigh: number
+  url: string
+  size: number
+  type: string
+  thumbnails: any
+  filename: string
+}
+export interface IProduct {
+  name?: string
+  price: number
+  description?: string
+  stock: number
+  stars?: number
+  reviews?: number
+  id?: string
+  company?: string
+  images?: IImages[]
+}
+
 export enum ProductActionKind {
   SIDEBAR_CLOSE = 'SIDEBAR_CLOSE',
   SIDEBAR_OPEN = 'SIDEBAR_OPEN',
