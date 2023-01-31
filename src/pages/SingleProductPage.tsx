@@ -12,26 +12,13 @@ import {
 } from '../components'
 import styled from 'styled-components'
 import { formatPrice } from '../utils/helpers'
+import { IProduct } from '../types/globaltypes.types'
 
-interface IImages {
-  id: string
-}
-interface IProduct {
-  name?: string,
-  price?: number,
-  description?: string,
-  stock?: number,
-  stars?: number,
-  reviews?: number,
-  id?: string,
-  company?: string,
-  images?: IImages[]
-}
 
 const SingleProductPage = () => {
   const { id } = useParams();
   const navigate = useNavigate()
-  console.log(id);
+
   const { fetchSingleProduct, single_product_loading: loading, single_product_error: error, single_product: product } = useProductsContext()
   useEffect(() => {
     fetchSingleProduct(`${url}${id}`)
@@ -43,20 +30,21 @@ const SingleProductPage = () => {
       }, 3000);
     }
   }, [error])
+
+  const { name, price, description, stock, stars, reviews, id: sku, company, images }: IProduct = product
   if (loading) {
     return <Loading />
   }
   if (error) {
     return <Error />
   }
-  const { name, price, description, stock, stars, reviews, id: sku, company, images }: IProduct = product
-  console.log(product);
+
   return <Wrapper>
     <PageHero title={name} productName=" " />
     <div className="section section-center page">
       <Link to="/products" className='btn'>back to products</Link>
       <div className="product-center">
-        <ProductImages />
+        <ProductImages images={images!} />
         <section className='content'>
           <h2>{name}</h2>
           <Stars />
