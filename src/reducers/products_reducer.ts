@@ -1,8 +1,7 @@
+import { InitialStateType } from '../context/products_context'
 import { ProductActionKind, ProductAction } from '../types/globaltypes.types'
 
-interface ProductState {}
-
-const products_reducer = (state: ProductState, action: ProductAction) => {
+const products_reducer = (state: InitialStateType, action: ProductAction) => {
   const { type, payload } = action
   switch (type) {
     case ProductActionKind.SIDEBAR_OPEN:
@@ -12,17 +11,24 @@ const products_reducer = (state: ProductState, action: ProductAction) => {
     case ProductActionKind.GET_PRODUCTS_BEGIN:
       return { ...state, products_loading: true }
     case ProductActionKind.GET_PRODUCTS_SUCCESS:
-      const featured_products = payload?.filter(
+      const savedFilters = payload as Record<string, unknown>[]
+      const featured_products = savedFilters?.filter(
         (product: any) => product.featured === true
       )
       return {
         ...state,
         products_loading: false,
-        products: payload,
+        prdoucts: savedFilters,
         featured_products,
       }
     case ProductActionKind.GET_PRODUCTS_ERROR:
       return { ...state, products_loading: false, products_error: true }
+    case ProductActionKind.GET_SINGLE_PRODUCT_BEGIN:
+      return {
+        ...state,
+        single_product_loading: true,
+        single_product_error: false,
+      }
     case ProductActionKind.GET_SINGLE_PRODUCT_BEGIN:
       return {
         ...state,
@@ -42,6 +48,6 @@ const products_reducer = (state: ProductState, action: ProductAction) => {
         single_product_error: true,
       }
   }
-  throw new Error(`No Matching "${action.type}" -action type`)
+  throw new Error(`No Matching "${type}" -action type`)
 }
 export default products_reducer
