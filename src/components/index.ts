@@ -11,6 +11,7 @@ import Error from './Error'
 import ProductImages from './ProductImages'
 import Stars from './Stars'
 import AddToCart from './AddToCart'
+import AmountButtons from './AmountButtons'
 
 export {
   Navbar,
@@ -26,4 +27,5 @@ export {
   ProductImages,
   Stars,
   AddToCart,
+  AmountButtons,
 }
