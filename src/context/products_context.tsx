@@ -12,7 +12,7 @@ interface IObject {
     id: string,
     image: string,
     name: string,
-    price: number,
+    price?: number,
     shipping: boolean,
     featured: boolean,
 }
