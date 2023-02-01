@@ -29,11 +29,12 @@ export interface IProduct {
   price: number
   description?: string
   stock: number
-  stars?: number
+  stars: number
   reviews?: number
   id?: string
   company?: string
   images?: IImages[]
+  colors: string[]
 }
 
 export enum ProductActionKind {
