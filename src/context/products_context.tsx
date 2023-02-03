@@ -12,7 +12,7 @@ export type InitialStateType = {
     products_loading: boolean;
     featured_products: Array<any>
     products_error: boolean
-    products: IObject[]
+    products: any
     single_product_loading: boolean
     single_product_error: boolean
     single_product: any,

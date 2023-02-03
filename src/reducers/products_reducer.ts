@@ -18,7 +18,7 @@ const products_reducer = (state: InitialStateType, action: ProductAction) => {
       return {
         ...state,
         products_loading: false,
-        prdoucts: savedFilters,
+        products: savedFilters,
         featured_products,
       }
     case ProductActionKind.GET_PRODUCTS_ERROR:

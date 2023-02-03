@@ -1,18 +1,30 @@
 import React from 'react'
 import styled from 'styled-components'
-import { PageHero } from '../components'
+import { Filters, PageHero, ProductList, Sort } from '../components'
+import { useProductsContext } from '../context/products_context'
+
+
 
 const ProductsPage = () => {
-    return <main>
-        <PageHero title="products" />
-        <Wrapper className='page'>
-            <div className="section-center products">
-
-            </div>
-        </Wrapper>
+  const { products, single_product } = useProductsContext()
+  console.log(products, "vghgh");
+  return (
+    <main>
+      <PageHero title="products" />
+      <Wrapper className='page'>
+        <div className="section-center products">
+          <Filters />
+          <div>
+            <Sort />
+            <ProductList />
+          </div>
+        </div>
+      </Wrapper>
     </main>
-}
 
+
+  )
+}
 const Wrapper = styled.div`
   .products {
     display: grid;
