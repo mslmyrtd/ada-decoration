@@ -12,6 +12,9 @@ import ProductImages from './ProductImages'
 import Stars from './Stars'
 import AddToCart from './AddToCart'
 import AmountButtons from './AmountButtons'
+import Filters from './Filters'
+import Sort from './Sort'
+import ProductList from './ProductList'
 
 export {
   Navbar,
@@ -28,4 +31,7 @@ export {
   Stars,
   AddToCart,
   AmountButtons,
+  Filters,
+  Sort,
+  ProductList,
 }
