@@ -7,7 +7,6 @@ import { useProductsContext } from '../context/products_context'
 
 const ProductsPage = () => {
   const { products, single_product } = useProductsContext()
-  console.log(products, "vghgh");
   return (
     <main>
       <PageHero title="products" />

@@ -48,7 +48,6 @@ export const ProductsProvider = ({ children }: InputProviderProps) => {
         try {
             const response = await axios(url)
             const products = (response.data)
-            console.log(products, "products");
             dispatch({ type: ProductActionKind.GET_PRODUCTS_SUCCESS, payload: products })
         } catch (error) {
             dispatch({ type: ProductActionKind.GET_PRODUCTS_ERROR })
