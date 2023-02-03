@@ -8,7 +8,9 @@ export type InitialStateType = {
     all_products: Record<string | number, undefined>[],
     grid_view: boolean,
     setGridView: (event: MouseEvent<HTMLButtonElement>) => void
-    setListView: (event: MouseEvent<HTMLButtonElement>) => void
+    setListView: (event: MouseEvent<HTMLButtonElement>) => void,
+    updateSort: () => void
+    sort: string
 }
 
 const initialState = {
@@ -16,7 +18,9 @@ const initialState = {
     all_products: [],
     grid_view: true,
     setGridView: () => null,
-    setListView: () => null
+    setListView: () => null,
+    sort: "price-lowest",
+    updateSort: () => null
 }
 
 const FilterContext = React.createContext<InitialStateType>(initialState)
@@ -36,9 +40,13 @@ export const FilterProvider = ({ children }: InputProviderProps) => {
     const setListView = () => {
         dispatch({ type: FilterActionKind.SET_LISTVIEW })
     }
-
+    const updateSort = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        //const name = e.target.name
+        const value = e.target.value
+        dispatch({ type: FilterActionKind.UPDATE_SORT, payload: value })
+    }
     return (
-        <FilterContext.Provider value={{ ...state, setGridView, setListView }}>
+        <FilterContext.Provider value={{ ...state, setGridView, setListView, updateSort }}>
             {children}
         </FilterContext.Provider>
     )
