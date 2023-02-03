@@ -36,7 +36,18 @@ export interface IProduct {
   images?: IImages[]
   colors: string[]
 }
-
+export interface IObject {
+  category: string
+  colors: Array<string>
+  company: string
+  description: string
+  id: string
+  image: string
+  name: string
+  price?: number
+  shipping: boolean
+  featured: boolean
+}
 export enum ProductActionKind {
   SIDEBAR_CLOSE = 'SIDEBAR_CLOSE',
   SIDEBAR_OPEN = 'SIDEBAR_OPEN',
@@ -50,4 +61,19 @@ export enum ProductActionKind {
 export interface ProductAction {
   type: ProductActionKind
   payload?: number | string | Record<string | number, unknown>[]
+}
+
+export enum FilterActionKind {
+  SET_LISTVIEW = 'SET_LISTVIEW',
+  LOAD_PRODUCTS = 'LOAD_PRODUCTS',
+  SET_GRIDVIEW = 'SET_GRIDVIEW',
+  UPDATE_SORT = 'UPDATE_SORT',
+  SORT_PRODUCTS = 'SORT_PRODUCTS',
+  UPDATE_FILTERS = 'UPDATE_FILTERS',
+  FILTER_PRODUCTS = 'FILTER_PRODUCTS',
+  CLEAR_FILTERS = 'CLEAR_FILTERS',
+}
+export interface FilterAction {
+  type: FilterActionKind
+  payload?: any | Record<string | number, unknown>[]
 }
