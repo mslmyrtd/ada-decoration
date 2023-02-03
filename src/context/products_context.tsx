@@ -1,21 +1,9 @@
 import React, { useContext, useReducer, MouseEvent, useEffect, } from 'react'
 import reducer from '../reducers/products_reducer'
 import { products_url as url } from '../utils/constants'
-import { InputProviderProps, ProductActionKind } from '../types/globaltypes.types'
+import { InputProviderProps, ProductActionKind, IObject } from '../types/globaltypes.types'
 import axios from 'axios'
 
-interface IObject {
-    category: string,
-    colors: Array<string>,
-    company: string,
-    description: string,
-    id: string,
-    image: string,
-    name: string,
-    price?: number,
-    shipping: boolean,
-    featured: boolean,
-}
 
 export type InitialStateType = {
     openSidebar: (event: MouseEvent<HTMLButtonElement | HTMLAnchorElement | HTMLButtonElement>) => void;
@@ -60,6 +48,7 @@ export const ProductsProvider = ({ children }: InputProviderProps) => {
         try {
             const response = await axios(url)
             const products = (response.data)
+            console.log(products, "products");
             dispatch({ type: ProductActionKind.GET_PRODUCTS_SUCCESS, payload: products })
         } catch (error) {
             dispatch({ type: ProductActionKind.GET_PRODUCTS_ERROR })
