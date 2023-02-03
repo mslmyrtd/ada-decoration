@@ -5,13 +5,14 @@ import { useProductsContext } from './products_context'
 
 export type InitialStateType = {
     filtered_products: Record<string | number, undefined>[],
-    all_products: Record<string | number, undefined>[]
-
+    all_products: Record<string | number, undefined>[],
+    grid_view: boolean
 }
 
 const initialState = {
     filtered_products: [],
-    all_products: []
+    all_products: [],
+    grid_view: true
 }
 
 const FilterContext = React.createContext<InitialStateType>(initialState)
