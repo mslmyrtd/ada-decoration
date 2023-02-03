@@ -20,6 +20,11 @@ const filter_reducer = (state: InitialStateType, action: FilterAction) => {
         ...state,
         grid_view: false,
       }
+    case FilterActionKind.UPDATE_SORT:
+      return {
+        ...state,
+        sort: payload,
+      }
   }
   throw new Error(`No Matching "${type}" -action type`)
 }
