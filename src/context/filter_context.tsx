@@ -20,6 +20,8 @@ export type InitialStateType = {
         max_price: number,
         shipping: boolean
     }
+    updateFilters: (event: React.ChangeEvent<HTMLInputElement>) => void,
+    clearFilters: () => void,
 }
 
 const initialState = {
@@ -38,7 +40,9 @@ const initialState = {
         min_price: 0,
         max_price: 0,
         shipping: false
-    }
+    },
+    updateFilters: () => null,
+    clearFilters: () => null,
 }
 
 const FilterContext = React.createContext<InitialStateType>(initialState)
@@ -53,8 +57,9 @@ export const FilterProvider = ({ children }: InputProviderProps) => {
     }, [products])
 
     useEffect(() => {
+        dispatch({ type: FilterActionKind.FILTER_PRODUCTS })
         dispatch({ type: FilterActionKind.SORT_PRODUCTS })
-    }, [products, state.sort])
+    }, [products, state.sort, state.filters])
 
     const setGridView = () => {
         dispatch({ type: FilterActionKind.SET_GRIDVIEW })
@@ -67,8 +72,17 @@ export const FilterProvider = ({ children }: InputProviderProps) => {
         const value = e.target.value
         dispatch({ type: FilterActionKind.UPDATE_SORT, payload: value })
     }
+    const updateFilters = (e: React.ChangeEvent<HTMLInputElement>) => {
+        let name = e.target.name
+        let value = e.target.value
+        dispatch({ type: FilterActionKind.UPDATE_FILTERS, payload: { name, value } })
+
+    }
+    const clearFilters = () => {
+
+    }
     return (
-        <FilterContext.Provider value={{ ...state, setGridView, setListView, updateSort }}>
+        <FilterContext.Provider value={{ ...state, setGridView, setListView, updateSort, updateFilters, clearFilters }}>
             {children}
         </FilterContext.Provider>
     )
