@@ -9,8 +9,17 @@ export type InitialStateType = {
     grid_view: boolean,
     setGridView: (event: MouseEvent<HTMLButtonElement>) => void
     setListView: (event: MouseEvent<HTMLButtonElement>) => void,
-    updateSort: () => void
-    sort: string
+    updateSort: (event: React.ChangeEvent<HTMLSelectElement>) => void
+    sort: string,
+    filters: {
+        text: string,
+        company: string,
+        category: string,
+        color: string,
+        min_price: number,
+        max_price: number,
+        shipping: boolean
+    }
 }
 
 const initialState = {
@@ -20,7 +29,16 @@ const initialState = {
     setGridView: () => null,
     setListView: () => null,
     sort: "price-lowest",
-    updateSort: () => null
+    updateSort: () => null,
+    filters: {
+        text: "",
+        company: "all",
+        category: "all",
+        color: "all",
+        min_price: 0,
+        max_price: 0,
+        shipping: false
+    }
 }
 
 const FilterContext = React.createContext<InitialStateType>(initialState)
