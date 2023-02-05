@@ -18,7 +18,8 @@ export type InitialStateType = {
         color: string,
         min_price: number,
         max_price: number,
-        shipping: boolean
+        shipping: boolean,
+        price: number
     }
     updateFilters: (event: React.ChangeEvent<HTMLInputElement> | MouseEvent<HTMLButtonElement> | SelectHTMLAttributes<HTMLSelectElement> | any) => void,
     clearFilters: () => void,
@@ -39,7 +40,8 @@ const initialState = {
         color: "all",
         min_price: 0,
         max_price: 0,
-        shipping: false
+        shipping: false,
+        price: 0
     },
     updateFilters: () => null,
     clearFilters: () => null,
@@ -80,6 +82,9 @@ export const FilterProvider = ({ children }: InputProviderProps) => {
         }
         if (name === "color") {
             value = e.target.dataset.color
+        }
+        if (name === "price") {
+            value = Number(value)
         }
         dispatch({ type: FilterActionKind.UPDATE_FILTERS, payload: { name, value } })
 
