@@ -20,7 +20,7 @@ export type InitialStateType = {
         max_price: number,
         shipping: boolean
     }
-    updateFilters: (event: React.ChangeEvent<HTMLInputElement>) => void,
+    updateFilters: (event: React.ChangeEvent<HTMLInputElement> | MouseEvent<HTMLButtonElement>) => void,
     clearFilters: () => void,
 }
 
@@ -72,9 +72,12 @@ export const FilterProvider = ({ children }: InputProviderProps) => {
         const value = e.target.value
         dispatch({ type: FilterActionKind.UPDATE_SORT, payload: value })
     }
-    const updateFilters = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const updateFilters = (e: React.ChangeEvent<HTMLInputElement> | any) => {
         let name = e.target.name
         let value = e.target.value
+        if (name === "category") {
+            value = e.target.textContent
+        }
         dispatch({ type: FilterActionKind.UPDATE_FILTERS, payload: { name, value } })
 
     }
