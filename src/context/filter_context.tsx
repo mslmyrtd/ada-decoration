@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useReducer, MouseEvent } from 'react'
+import React, { useEffect, useContext, useReducer, MouseEvent, SelectHTMLAttributes } from 'react'
 import reducer from '../reducers/filter_reducer'
 import { FilterActionKind, InputProviderProps } from '../types/globaltypes.types'
 import { useProductsContext } from './products_context'
@@ -20,7 +20,7 @@ export type InitialStateType = {
         max_price: number,
         shipping: boolean
     }
-    updateFilters: (event: React.ChangeEvent<HTMLInputElement> | MouseEvent<HTMLButtonElement>) => void,
+    updateFilters: (event: React.ChangeEvent<HTMLInputElement> | MouseEvent<HTMLButtonElement> | SelectHTMLAttributes<HTMLSelectElement> | any) => void,
     clearFilters: () => void,
 }
 

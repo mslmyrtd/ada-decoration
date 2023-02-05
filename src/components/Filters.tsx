@@ -6,7 +6,7 @@ import { FaCheck } from 'react-icons/fa'
 
 const Filters = () => {
   const {
-    filters: { text, category, color, max_price, min_price, shipping },
+    filters: { text, category, color, max_price, min_price, shipping, company },
     updateFilters,
     clearFilters,
     all_products,
@@ -29,6 +29,16 @@ const Filters = () => {
               return <button key={index} onClick={updateFilters} type="button" name='category' className={`${category === c.toLowerCase() ? "active" : null}`} >{c}</button>
             })}
           </div>
+        </div>
+        <div className="form-control">
+          <h5>company</h5>
+          <select name="company" id="company" value={company} onChange={updateFilters} className="company">
+            {companies.map((c: any, index) => {
+              return <option key={index} value={c}>
+                {c}
+              </option>
+            })}
+          </select>
         </div>
       </form>
     </div>
