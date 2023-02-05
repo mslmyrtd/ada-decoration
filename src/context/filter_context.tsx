@@ -78,6 +78,9 @@ export const FilterProvider = ({ children }: InputProviderProps) => {
         if (name === "category") {
             value = e.target.textContent
         }
+        if (name === "color") {
+            value = e.target.dataset.color
+        }
         dispatch({ type: FilterActionKind.UPDATE_FILTERS, payload: { name, value } })
 
     }
