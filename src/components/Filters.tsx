@@ -121,10 +121,15 @@ const Filters = () => {
               min={min_price}
               max={max_price}
               value={price}
-
             />
           </div>
+          {/* shipping */}
+          <div className="form-control shipping">
+            <label htmlFor="shipping">free shipping</label>
+            <input type="checkbox" name='shipping' id='shipping' onChange={updateFilters} checked={shipping} />
+          </div>
         </form>
+        <button type='button' className='clear-btn' onClick={clearFilters}> cleas filters</button>
       </div>
     </Wrapper>
   )
