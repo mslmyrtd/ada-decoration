@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { FaCheck } from 'react-icons/fa'
 import { IProduct } from '../types/globaltypes.types'
 import AmountButtons from './AmountButtons'
+import { useCartContext } from '../context/cart_context'
 
 interface IProps {
   product: IProduct
@@ -11,6 +12,7 @@ interface IProps {
 
 
 const AddToCart = ({ product }: IProps) => {
+  const { addToCart } = useCartContext()
   const { id, stock, colors } = product
   const [mainColor, setMainColor] = useState(colors[0])
   const [amount, setAmount] = useState(1)
@@ -47,7 +49,7 @@ const AddToCart = ({ product }: IProps) => {
       </div>
       <div className="btn-container">
         <AmountButtons amount={amount} increase={increase} decrease={decrease} />
-        <Link to="/cart" className="btn">add to cart</Link>
+        <Link to="/cart" className="btn" onClick={() => addToCart(id, mainColor, amount, product)} >add to cart</Link>
       </div>
     </Wrapper>
   )
