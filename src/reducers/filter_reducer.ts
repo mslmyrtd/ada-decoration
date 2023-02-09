@@ -58,8 +58,18 @@ const filter_reducer = (state: InitialStateType, action: FilterAction) => {
         filters: { ...state.filters, [name]: value },
       }
     case FilterActionKind.FILTER_PRODUCTS:
+      const { all_products } = state
+      const { text, company, color } = state.filters
+
+      let tempAllProducts = [...all_products]
+      if (text) {
+        tempAllProducts = tempAllProducts.filter((product) => {
+          return product?.name.toLowerCase().startsWith(text)
+        })
+      }
       return {
         ...state,
+        filtered_products: tempAllProducts,
       }
     case FilterActionKind.CLEAR_FILTERS:
       return {
