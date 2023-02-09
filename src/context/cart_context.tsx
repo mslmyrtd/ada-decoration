@@ -8,7 +8,10 @@ export type InitialStateType = {
     total_items: number,
     total_amount: number,
     shipping_fee: number,
-    addToCart: (id: any, color: any, amount: any, product: any) => void
+    addToCart: (id: string, color: any, amount: any, product: any) => void
+    removeItem: (id: string) => void
+    toggleAmount: (id: string, value: string) => void
+    clearCart: (id: string, color: any, amount: any, product: any) => void
 }
 
 
@@ -18,23 +21,38 @@ const initialState =
     total_items: 0,
     total_amount: 0,
     shipping_fee: 534,
-    addToCart: (id: any, color: any, amount: any, product: any) => null
+    addToCart: (id: string, color: any, amount: any, product: any) => null,
+    removeItem: (id: string) => null,
+    toggleAmount: (id: string, value: string) => null,
+    clearCart: () => null
 }
 
 const CartContext = React.createContext<InitialStateType>(initialState)
 
 export const CartProvider = ({ children }: InputProviderProps) => {
     const [state, dispatch] = useReducer(reducer, initialState)
-    //add to cart
 
-    const addToCart = (id: any, color: any, amount: any, product: any) => {
+    //add to cart
+    const addToCart = (id: string, color: any, amount: any, product: any) => {
         console.log(id, color, amount, product)
         dispatch({ type: FilterActionKind.ADD_TO_CART, payload: { id, color, amount, product } })
+    }
+    //remove  item
+    const removeItem = (id: string) => {
+        //ispatch({ type: FilterActionKind.ADD_TO_CART, payload: { id, color, amount, product } })
+    }
+    //toggle amount
+    const toggleAmount = (id: string, value: string) => {
+        //dispatch({ type: FilterActionKind.ADD_TO_CART, payload: { id, color, amount, product } })
+    }
+    //clear cart
+    const clearCart = (id: string) => {
+        //dispatch({ type: FilterActionKind.ADD_TO_CART, payload: { id, color, amount, product } })
     }
 
 
     return (
-        <CartContext.Provider value={{ ...state, addToCart }}>{children}</CartContext.Provider>
+        <CartContext.Provider value={{ ...state, addToCart, removeItem, toggleAmount, clearCart }}>{children}</CartContext.Provider>
     )
 }
 export const useCartContext = () => {
