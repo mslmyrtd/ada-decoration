@@ -3,20 +3,23 @@ import styled from 'styled-components'
 import { useCartContext } from '../context/cart_context'
 import { formatPrice } from '../utils/helpers'
 import { Link } from 'react-router-dom'
+import { useFilterContext } from '../context/filter_context'
 
 const CartTotals = () => {
-    const { total_amount, shipping_fee } = useCartContext()
-    return <Wrapper>
-        <div>
-            <article>
-                <h5>subtotal: <span>{formatPrice(total_amount)}</span> </h5>
-                <p>shipping: <span>{formatPrice(shipping_fee)}</span> </p>
-                <hr />
-                <h4>order total: <span>{formatPrice(total_amount + shipping_fee)}</span>  </h4>
-            </article>
-            <Link to="/checkout" className='btn'>proceed to checkout</Link>
-        </div>
-    </Wrapper>
+  const { total_amount, shipping_fee } = useCartContext()
+  const { filters } = useFilterContext()
+  return <Wrapper>
+    <div>
+      <article>
+        <h5>subtotal: <span>{formatPrice(total_amount)}</span> </h5>
+        {filters.shipping ? <p>shipping: <span>{formatPrice(0)}</span> </p> : <p>shipping: <span>{formatPrice(shipping_fee)}</span> </p>}
+
+        <hr />
+        {filters.shipping ? <h4>order total: <span>{formatPrice(total_amount)}</span>  </h4> : <h4>order total: <span>{formatPrice(total_amount + shipping_fee)}</span>  </h4>}
+      </article>
+      <Link to="/checkout" className='btn'>proceed to checkout</Link>
+    </div>
+  </Wrapper>
 }
 
 const Wrapper = styled.section`
