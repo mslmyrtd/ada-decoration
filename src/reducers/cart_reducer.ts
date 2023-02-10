@@ -11,7 +11,7 @@ const cart_reducer = (state: InitialStateType, action: FilterAction) => {
         const tempCart = state.cart.map((cartItem) => {
           if (cartItem.id === id + color) {
             let newAmount = cartItem.amount + amount
-            if (newAmount > cartItem.max) {
+            if (newAmount > Number(cartItem.max)) {
               newAmount = cartItem.max
             }
             return { ...cartItem, amount: newAmount }
@@ -19,6 +19,7 @@ const cart_reducer = (state: InitialStateType, action: FilterAction) => {
             return cartItem
           }
         })
+        return { ...state, cart: tempCart }
       } else {
         const newItem = {
           id: id + color,
@@ -31,8 +32,16 @@ const cart_reducer = (state: InitialStateType, action: FilterAction) => {
         }
         return { ...state, cart: [...state.cart, newItem] }
       }
+    case FilterActionKind.REMOVE_CART_ITEM:
+      const tempCart = state.cart.filter((item) => item.id !== payload)
       return {
         ...state,
+        cart: tempCart,
+      }
+    case FilterActionKind.CLEAR_CART:
+      return {
+        ...state,
+        cart: [],
       }
   }
   throw new Error(`No Matching "${action.type}" - action type`)
