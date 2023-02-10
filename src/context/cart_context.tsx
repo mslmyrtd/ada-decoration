@@ -59,6 +59,7 @@ export const CartProvider = ({ children }: InputProviderProps) => {
         dispatch({ type: FilterActionKind.CLEAR_CART })
     }
     useEffect(() => {
+        dispatch({ type: FilterActionKind.COUNT_CART_TOTALS })
         localStorage.setItem("cart", JSON.stringify(state.cart))
     }, [state.cart])
 
