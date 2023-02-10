@@ -43,6 +43,28 @@ const cart_reducer = (state: InitialStateType, action: FilterAction) => {
         ...state,
         cart: [],
       }
+    case FilterActionKind.TOGGLE_CART_ITEM_AMOUNT:
+      const { identify, value } = payload
+      const toggleCart = state.cart.map((item) => {
+        if (item.id === identify) {
+          if (value === 'inc') {
+            let newAmount = Number(item.amount) + 1
+            if (newAmount > Number(item.max)) {
+              newAmount = Number(item.max)
+            }
+            return { ...item, amount: newAmount }
+          }
+          if (value === 'dec') {
+            let newAmount = Number(item.amount) - 1
+            if (newAmount < 1) {
+              newAmount = 1
+            }
+            return { ...item, amount: newAmount }
+          }
+        }
+        return item
+      })
+      return { ...state, cart: toggleCart }
   }
   throw new Error(`No Matching "${action.type}" - action type`)
 }

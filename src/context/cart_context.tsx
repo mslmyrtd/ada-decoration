@@ -10,7 +10,7 @@ export type InitialStateType = {
     shipping_fee: number,
     addToCart: (id: string, color: any, amount: any, product: any) => void
     removeItem: (id: string) => void
-    toggleAmount: (id: string, value: string) => void
+    toggleAmount: (identify: string, value: string) => void
     clearCart: (event: MouseEvent<HTMLButtonElement>) => void
 }
 
@@ -31,8 +31,8 @@ const initialState =
     total_amount: 0,
     shipping_fee: 534,
     addToCart: (id: string, color: any, amount: any, product: any) => null,
-    removeItem: (id: string) => null,
-    toggleAmount: (id: string, value: string) => null,
+    removeItem: () => null,
+    toggleAmount: () => null,
     clearCart: () => null
 }
 
@@ -51,8 +51,8 @@ export const CartProvider = ({ children }: InputProviderProps) => {
         dispatch({ type: FilterActionKind.REMOVE_CART_ITEM, payload: id })
     }
     //toggle amount
-    const toggleAmount = (id: string, value: string) => {
-        //dispatch({ type: FilterActionKind.ADD_TO_CART, payload: { id, color, amount, product } })
+    const toggleAmount = (identify: string, value: string) => {
+        dispatch({ type: FilterActionKind.TOGGLE_CART_ITEM_AMOUNT, payload: { identify, value } })
     }
     //clear cart
     const clearCart = () => {
