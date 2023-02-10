@@ -4,7 +4,7 @@ import { InputProviderProps, FilterActionKind } from '../types/globaltypes.types
 
 
 export type InitialStateType = {
-    cart: Record<string, undefined>[],
+    cart: Record<string | number, undefined>[],
     total_items: number,
     total_amount: number,
     shipping_fee: number,
@@ -48,7 +48,7 @@ export const CartProvider = ({ children }: InputProviderProps) => {
     }
     //remove  item
     const removeItem = (id: string) => {
-        //ispatch({ type: FilterActionKind.ADD_TO_CART, payload: { id, color, amount, product } })
+        dispatch({ type: FilterActionKind.REMOVE_CART_ITEM, payload: id })
     }
     //toggle amount
     const toggleAmount = (id: string, value: string) => {
@@ -56,7 +56,7 @@ export const CartProvider = ({ children }: InputProviderProps) => {
     }
     //clear cart
     const clearCart = () => {
-        //dispatch({ type: FilterActionKind.ADD_TO_CART, payload: { id, color, amount, product } })
+        dispatch({ type: FilterActionKind.CLEAR_CART })
     }
     useEffect(() => {
         localStorage.setItem("cart", JSON.stringify(state.cart))
