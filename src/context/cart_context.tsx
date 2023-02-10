@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useReducer } from 'react'
+import React, { useEffect, useContext, useReducer, MouseEvent } from 'react'
 import reducer from '../reducers/cart_reducer'
 import { InputProviderProps, FilterActionKind } from '../types/globaltypes.types'
 
@@ -11,7 +11,7 @@ export type InitialStateType = {
     addToCart: (id: string, color: any, amount: any, product: any) => void
     removeItem: (id: string) => void
     toggleAmount: (id: string, value: string) => void
-    clearCart: (id: string, color: any, amount: any, product: any) => void
+    clearCart: (event: MouseEvent<HTMLButtonElement>) => void
 }
 
 const getLocalStorage = () => {
@@ -55,7 +55,7 @@ export const CartProvider = ({ children }: InputProviderProps) => {
         //dispatch({ type: FilterActionKind.ADD_TO_CART, payload: { id, color, amount, product } })
     }
     //clear cart
-    const clearCart = (id: string) => {
+    const clearCart = () => {
         //dispatch({ type: FilterActionKind.ADD_TO_CART, payload: { id, color, amount, product } })
     }
     useEffect(() => {
