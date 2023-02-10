@@ -39,12 +39,12 @@ const filter_reducer = (state: InitialStateType, action: FilterAction) => {
       }
       if (sort === 'name-a') {
         tempProducts = tempProducts?.sort((a, b) => {
-          return a.name.localeCompare(b.name)
+          return String(a.name).localeCompare(String(b.name))
         })
       }
       if (sort === 'name-z') {
         tempProducts = tempProducts?.sort((a, b) => {
-          return b.name.localeCompare(a.name)
+          return String(b.name).localeCompare(String(a.name))
         })
       }
       return {
@@ -64,7 +64,7 @@ const filter_reducer = (state: InitialStateType, action: FilterAction) => {
       let tempAllProducts = [...all_products]
       if (text) {
         tempAllProducts = tempAllProducts.filter((product) => {
-          return product?.name.toLowerCase().startsWith(text)
+          return String(product.name).toLowerCase().startsWith(text)
         })
       }
       if (category !== 'all') {
@@ -79,12 +79,12 @@ const filter_reducer = (state: InitialStateType, action: FilterAction) => {
       }
       if (color !== 'all') {
         tempAllProducts = tempAllProducts.filter((product) => {
-          return product.colors.find((c: string) => c === color)
+          return Array(product.colors).find((c: string) => c === color)
         })
       }
 
       tempAllProducts = tempAllProducts.filter((product) => {
-        return product.price <= price
+        return Number(product.price) <= price
       })
 
       if (shipping) {
