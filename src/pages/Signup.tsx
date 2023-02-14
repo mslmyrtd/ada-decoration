@@ -3,8 +3,7 @@ import { Wrapper } from '../styles/common'
 import logo from '../assets/logo.svg'
 const Signup = () => {
     return (
-        <Wrapper>
-            <div className="header">Register</div>
+        <Wrapper className='section'>
             <div className="content">
                 <div className="image">
                     <img src={logo} />

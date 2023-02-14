@@ -3,16 +3,15 @@ import { Wrapper } from '../styles/common'
 import logo from '../assets/logo.svg'
 const LoginPage = () => {
     return (
-        <Wrapper>
-            <div className="header" >Login</div>
+        <Wrapper className='section'>
             <div className="content">
                 <div className="image">
                     <img src={logo} />
                 </div>
                 <div className="form">
                     <div className="form-group">
-                        <label htmlFor="username">Username</label>
-                        <input type="text" name="username" placeholder="username" />
+                        <label htmlFor="email">Email</label>
+                        <input type="text" name="email" placeholder="email" />
                     </div>
                     <div className="form-group">
                         <label htmlFor="password">Password</label>
