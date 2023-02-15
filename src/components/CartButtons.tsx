@@ -1,13 +1,21 @@
-import { FaShoppingCart, FaUserPlus } from 'react-icons/fa'
+import { FaShoppingCart, FaUserMinus, FaUserPlus } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { useCartContext } from '../context/cart_context'
 import { useProductsContext } from '../context/products_context'
+import { useUserContext } from '../context/user_context'
+import { signOut } from "firebase/auth";
+import { auth } from "../auth/firebase-config";
+import { useNavigate } from "react-router-dom";
 
 const CartButtons = () => {
   const { closeSidebar } = useProductsContext()
   const { total_items } = useCartContext()
-
+  const { currentUser } = useUserContext()
+  const navigate = useNavigate()
+  const signOutFunc = async () => {
+    await signOut(auth);
+  };
   return (
     <Wrapper className='cart-btn-wrapper'>
       <Link to="/cart" className='cart-btn' onClick={closeSidebar}>
@@ -15,9 +23,15 @@ const CartButtons = () => {
           <span className='cart-value'>{total_items}</span>
         </span>
       </Link>
-      <button type='button' className='auth-btn'>
-        Login <FaUserPlus />
-      </button>
+      {currentUser ? (
+        <button type='button' className='auth-btn' onClick={() => signOutFunc()}>
+          Logout <FaUserMinus />
+        </button>
+      ) : (
+        <button type='button' className='auth-btn' onClick={() => navigate("/login")}>
+          Login <FaUserPlus />
+        </button>
+      )}
     </Wrapper>
   )
 }
