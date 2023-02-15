@@ -6,10 +6,13 @@ import { links } from '../utils/constants'
 import styled from 'styled-components'
 import CartButtons from './CartButtons'
 import { useProductsContext } from '../context/products_context'
+import { useUserContext } from '../context/user_context'
 
 
 const Sidebar = () => {
   const { isSidebarOpen, closeSidebar } = useProductsContext()
+  const { currentUser } = useUserContext()
+
   return <SidebarContainer>
     <aside className={`${isSidebarOpen ? "sidebar show-sidebar" : "sidebar"}`}>
       <div className="sidebar-header">
@@ -24,9 +27,10 @@ const Sidebar = () => {
             <Link to={url} onClick={closeSidebar}>{icon} {text}</Link>
           </li>
         })}
-        <li >
+        {currentUser && <li >
           <Link to="/checkout" onClick={closeSidebar}>checkout</Link>
-        </li>
+        </li>}
+
       </ul>
       <CartButtons />
     </aside>

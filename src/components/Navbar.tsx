@@ -6,9 +6,11 @@ import { links } from '../utils/constants'
 import logo from '../assets/logo.svg'
 import CartButtons from './CartButtons'
 import { useProductsContext } from '../context/products_context'
+import { useUserContext } from '../context/user_context'
 
 const Navbar = () => {
   const { openSidebar } = useProductsContext()
+  const { currentUser } = useUserContext()
   return (
 
     <NavContainer>
@@ -26,6 +28,11 @@ const Navbar = () => {
               <Link to={url}>{text}</Link>
             </li>
           })}
+          {
+            currentUser && <li>
+              <Link to="/checkout">checkout</Link>
+            </li>
+          }
         </ul>
         <CartButtons />
       </div>
