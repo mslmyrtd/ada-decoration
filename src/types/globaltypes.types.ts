@@ -11,7 +11,7 @@ export interface IServices {
   text: string
 }
 export interface InputProviderProps {
-  children: React.ReactNode
+  children: React.ReactNode | any
 }
 
 export interface IImages {
