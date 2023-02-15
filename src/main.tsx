@@ -6,6 +6,7 @@ import { ProductsProvider } from './context/products_context'
 import { FilterProvider } from './context/filter_context'
 import { CartProvider } from './context/cart_context'
 import { Auth0Provider } from '@auth0/auth0-react'
+import { UserProvider } from './context/user_context'
 
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
@@ -18,15 +19,16 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     cacheLocation="localstorage"
   >
     <React.StrictMode>
-      <ProductsProvider>
-        <FilterProvider>
-          <CartProvider>
-            <App />
-          </CartProvider>
-        </FilterProvider>
-      </ProductsProvider>
+      <UserProvider>
+        <ProductsProvider>
+          <FilterProvider>
+            <CartProvider>
+              <App />
+            </CartProvider>
+          </FilterProvider>
+        </ProductsProvider>
+      </UserProvider>
     </React.StrictMode>
-
   </Auth0Provider>,
 
 )
