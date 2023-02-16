@@ -11,7 +11,7 @@ export type InitialStateType = {
     addToCart: (id: string, color: any, amount: any, product: any) => void
     removeItem: (id: string) => void
     toggleAmount: (identify: string, value: string) => void
-    clearCart: (event: MouseEvent<HTMLButtonElement>) => void
+    clearCart: (event: MouseEvent<HTMLButtonElement> | any) => void
 }
 
 const getLocalStorage = () => {

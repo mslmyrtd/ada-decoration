@@ -10,10 +10,11 @@ import { useNavigate } from "react-router-dom";
 
 const CartButtons = () => {
   const { closeSidebar } = useProductsContext()
-  const { total_items } = useCartContext()
+  const { total_items, clearCart } = useCartContext()
   const { currentUser } = useUserContext()
   const navigate = useNavigate()
   const signOutFunc = async () => {
+    clearCart(null)
     await signOut(auth);
   };
   return (
