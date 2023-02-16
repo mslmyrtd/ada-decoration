@@ -2,8 +2,8 @@ import { initializeApp } from 'firebase/app'
 import { getAuth } from 'firebase/auth'
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyDUEMMAK2tnDxlwaMjkjzCJo1QZvw4Zu_E',
-  authDomain: 'e-commerce-cf7e7.firebaseapp.com',
+  apiKey: import.meta.env.VITE_API_KEY,
+  authDomain: import.meta.env.VITE_API_KEY_AUTH_DOMAIN,
   projectId: 'e-commerce-cf7e7',
   storageBucket: 'e-commerce-cf7e7.appspot.com',
   messagingSenderId: '178185654947',
