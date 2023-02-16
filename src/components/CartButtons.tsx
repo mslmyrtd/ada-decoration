@@ -17,6 +17,10 @@ const CartButtons = () => {
     clearCart(null)
     await signOut(auth);
   };
+  const handleLogin = () => {
+    closeSidebar(null)
+    navigate("/login")
+  }
   return (
     <Wrapper className='cart-btn-wrapper'>
       <Link to="/cart" className='cart-btn' onClick={closeSidebar}>
@@ -29,7 +33,7 @@ const CartButtons = () => {
           Logout <FaUserMinus />
         </button>
       ) : (
-        <button type='button' className='auth-btn' onClick={() => navigate("/login")}>
+        <button type='button' className='auth-btn' onClick={handleLogin}>
           Login <FaUserPlus />
         </button>
       )}

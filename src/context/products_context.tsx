@@ -7,7 +7,7 @@ import axios from 'axios'
 
 export type InitialStateType = {
     openSidebar: (event: MouseEvent<HTMLButtonElement | HTMLAnchorElement | HTMLButtonElement>) => void;
-    closeSidebar: (event: MouseEvent<HTMLButtonElement | HTMLAnchorElement | HTMLButtonElement>) => void;
+    closeSidebar: (event: MouseEvent<HTMLButtonElement | HTMLAnchorElement | HTMLButtonElement> | any) => void;
     isSidebarOpen: boolean;
     products_loading: boolean;
     featured_products: Array<any>
