@@ -14,27 +14,16 @@
 - #### TypeScript
 - #### Vite
 - #### Axios library
-- #### AuthO
-- #### 
+- #### Firebase
+- #### Stripe
 - #### Styled-Component
 - #### React-İcons
-- ####
+- #### Framer-Motion
 - #### React Router Dom
 <details><summary><b>Project Description</b></summary><br>
   <p>Hello everybody,
     in this project, i will build an app that allows the visitor to search Github users and display some useful info about the Github user, like the amount of repos list of followers, most star repo and etc. 
   </p>
-</details>
-<details><summary><b>Github API</b></summary><br>
-
-- [Root Endpoint](https://api.github.com)
-- [Get User](https://api.github.com/users/wesbos)
-- [Repos](https://api.github.com/users/john-smilga/repos?per_page=100)
-- [Followers](https://api.github.com/users/john-smilga/followers)
-- [Rate Limit](https://api.github.com/rate_limit)
-
-  For unauthenticated requests, the rate limit allows for up to 60 requests per hour. Unauthenticated requests are associated with the originating IP address, and not the user making requests.
-
 </details>
 
 <details><summary><b>Installation Instructions</b></summary><br>
@@ -45,7 +34,7 @@
 
 ```
 
-$ git clone https://github.com/mslmyrtd/SmartPulse.git
+$ git clone https://github.com/mslmyrtd/ada-decoration.git
 
 $ cd SmartPulse
 
@@ -84,7 +73,7 @@ Graphql routes starts with /graphql
 
 <details><summary><b>Deployment </b></summary><br>
 
-Deployed at Netlify @ <br>
+Deployed at Netlify @ <br> https://ada-decoration.netlify.app/
 Graphql queries can be done at @
 
 Check collection with Postman : <br>
@@ -147,7 +136,7 @@ $yarn test
 Contributions, issues and feature requests are welcome!
 Feel free to check issues page.
 
-Fork it (https://github.com/mslmyrtd/SmartPulse/fork) <br>
+Fork it (https://github.com/mslmyrtd/ada-decoration/fork) <br>
 Create your working branch (git checkout -b [choose-a-name]) <br>
 Commit your changes (git commit-m "commit") <br>
 Push to the branch (git push origin [chosen-name]) <br>
