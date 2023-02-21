@@ -3,10 +3,10 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "start": "vite",
+    "start": "netlify dev",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "dev": "netlify dev"
+    "dev": "vite"
   },
   "dependencies": {
     "@auth0/auth0-react": "^2.0.0",

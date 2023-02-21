@@ -65,9 +65,21 @@ export const Wrapper = styled.div`
         }
       }
     }
+    span {
+      display: flex;
+      justify-content: end;
+      .link:hover {
+        border-bottom: 2px solid var(--clr-primary-7);
+        color: var(--clr-primary-7);
+      }
+    }
   }
 
   .footer {
-    margin-top: 2em;
+    margin-top: 15px;
+    .btn {
+      margin: 10px;
+      text-align: center;
+    }
   }
 `

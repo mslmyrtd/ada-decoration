@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Wrapper } from '../styles/common'
-import logo from '../assets/logo.svg'
-import { useNavigate } from 'react-router-dom';
+import logoNo from '../assets/logoNo.svg'
+import { Link, useNavigate } from 'react-router-dom';
 import { createUserWithEmailAndPassword, updateProfile, GoogleAuthProvider } from "firebase/auth";
 import { auth } from "../auth/firebase-config";
 
@@ -25,7 +25,7 @@ const Signup = () => {
         <Wrapper className='section'>
             <div className="content">
                 <div className="image">
-                    <img src={logo} />
+                    <img src={logoNo} />
                 </div>
                 <div className="form">
                     <div className="form-group">
@@ -41,6 +41,8 @@ const Signup = () => {
                         <input type="text" name="password" placeholder="password" onChange={(e) => setPassword(e.target.value)} />
                     </div>
                 </div>
+
+                <span >Already have an account? <Link to="/login" className='link'> Login.</Link></span>
             </div>
             <div className="footer">
                 <button type="button" className="btn" onClick={handleSubmit}>
