@@ -7,6 +7,7 @@ import styled from 'styled-components'
 import CartButtons from './CartButtons'
 import { useProductsContext } from '../context/products_context'
 import { useUserContext } from '../context/user_context'
+import { VscChecklist } from "react-icons/vsc"
 
 
 const Sidebar = () => {
@@ -28,11 +29,12 @@ const Sidebar = () => {
           </li>
         })}
         {currentUser && <li >
-          <Link to="/checkout" onClick={closeSidebar}>checkout</Link>
+          <Link to="/checkout" onClick={closeSidebar}> <VscChecklist /> Checkout </Link>
         </li>}
 
       </ul>
       <CartButtons />
+
     </aside>
   </SidebarContainer>
 }
