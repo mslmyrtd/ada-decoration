@@ -15,7 +15,7 @@ export const Wrapper = styled.div`
     flex-direction: column;
 
     .image {
-      width: 20em;
+      width: 18em;
       img {
         width: 100%;
         height: 100%;

@@ -4,7 +4,9 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../auth/firebase-config";
 
 import { Wrapper } from '../styles/common'
-import logo from '../assets/logo.svg'
+import logoNo from '../assets/logoNo.svg'
+
+
 const LoginPage = () => {
     const navigate = useNavigate();
     const [email, setEmail] = useState();
@@ -21,7 +23,7 @@ const LoginPage = () => {
         <Wrapper className='section'>
             <div className="content">
                 <div className="image">
-                    <img src={logo} />
+                    <img src={logoNo} />
                 </div>
                 <div className="form">
                     <div className="form-group">
