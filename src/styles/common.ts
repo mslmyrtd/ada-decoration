@@ -14,12 +14,13 @@ export const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
 
-    .image {
-      width: 18em;
-      img {
-        width: 100%;
-        height: 100%;
-      }
+    p {
+      width: 100%;
+      height: 100%;
+      font-weight: 600;
+      justify-content: center;
+      display: inline-flex;
+      font-size: 2em;
     }
     .form {
       margin-top: 1.5em;

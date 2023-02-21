@@ -24,8 +24,8 @@ const Signup = () => {
     return (
         <Wrapper className='section'>
             <div className="content">
-                <div className="image">
-                    <img src={logoNo} />
+                <div>
+                    <p> ─── Register ───</p>
                 </div>
                 <div className="form">
                     <div className="form-group">
@@ -38,7 +38,7 @@ const Signup = () => {
                     </div>
                     <div className="form-group">
                         <label htmlFor="password">Password</label>
-                        <input type="text" name="password" placeholder="password" onChange={(e) => setPassword(e.target.value)} />
+                        <input type="password" name="password" placeholder="password" onChange={(e) => setPassword(e.target.value)} />
                     </div>
                 </div>
 

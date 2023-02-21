@@ -22,8 +22,8 @@ const LoginPage = () => {
     return (
         <Wrapper className='section'>
             <div className="content">
-                <div className="image">
-                    <img src={logoNo} />
+                <div >
+                    <p> ─── Login ───</p>
                 </div>
                 <div className="form">
                     <div className="form-group">
