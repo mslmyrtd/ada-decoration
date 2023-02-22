@@ -22,7 +22,7 @@
 - #### React Router Dom
 <details><summary><b>Project Description</b></summary><br>
   <p>Hello everybody,
-    in this project, i will build an app that allows the visitor to search Github users and display some useful info about the Github user, like the amount of repos list of followers, most star repo and etc. 
+    in this project, i created an online store for furniture company called Ada Decoration
   </p>
 </details>
 
