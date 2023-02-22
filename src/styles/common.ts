@@ -53,12 +53,12 @@ export const Wrapper = styled.div`
           transition: all 250ms ease-in-out;
           &:hover {
             background-color: #ffffff;
-            box-shadow: 0px 0px 8px 0.3px #0e81ce96;
+            box-shadow: 0px 0px 4px 0.3px var(--clr-primary-3);
           }
 
           &:focus {
             outline: none;
-            box-shadow: 0px 0px 14px 0.8px #3474dbb2;
+            box-shadow: 0px 0px 5px 0.8px var(--clr-primary-3);
           }
           &:placeholder-shown {
             letter-spacing: var(--spacing);
@@ -69,15 +69,20 @@ export const Wrapper = styled.div`
     span {
       display: flex;
       justify-content: end;
-      .link:hover {
-        border-bottom: 2px solid var(--clr-primary-7);
-        color: var(--clr-primary-7);
+      align-items: flex-start;
+      margin-top: -20px;
+      .link {
+        color: var(--clr-primary-3);
+        margin-left: 4px;
+        &:hover {
+          color: var(--clr-primary-5);
+        }
       }
     }
   }
 
   .footer {
-    margin-top: 15px;
+    margin-top: 20px;
     .btn {
       margin: 10px;
       text-align: center;

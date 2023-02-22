@@ -28,7 +28,7 @@ const LoginPage = () => {
                 <div className="form">
                     <div className="form-group">
                         <label htmlFor="email">Email</label>
-                        <input type="text" name="email" placeholder="email" onChange={(e) => setEmail(e.target.value)} />
+                        <input type="text" name="email" placeholder="email" onChange={(e) => setEmail(e.target.value)} autoFocus />
                     </div>
                     <div className="form-group">
                         <label htmlFor="password">Password</label>

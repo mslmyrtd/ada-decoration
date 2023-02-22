@@ -30,7 +30,7 @@ const Signup = () => {
                 <div className="form">
                     <div className="form-group">
                         <label htmlFor="username">Username</label>
-                        <input type="text" name="username" placeholder="username" onChange={(e) => setName(e.target.value)} />
+                        <input type="text" name="username" placeholder="username" onChange={(e) => setName(e.target.value)} autoFocus />
                     </div>
                     <div className="form-group">
                         <label htmlFor="email">Email</label>
