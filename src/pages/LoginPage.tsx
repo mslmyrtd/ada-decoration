@@ -2,9 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../auth/firebase-config";
-
 import { Wrapper } from '../styles/common'
-import logoNo from '../assets/logoNo.svg'
 
 
 const LoginPage = () => {
@@ -37,7 +35,6 @@ const LoginPage = () => {
                 </div>
             </div>
             <div className="footer">
-
                 <button type="button" className="btn" onClick={handleSubmit}>
                     Login
                 </button>

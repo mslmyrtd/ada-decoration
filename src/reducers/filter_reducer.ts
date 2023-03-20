@@ -81,6 +81,7 @@ const filter_reducer = (state: InitialStateType, action: FilterAction) => {
         tempAllProducts = tempAllProducts.filter((product) => {
           return Array(product.colors).find((c: string) => c === color)
         })
+        console.log(color)
       }
 
       tempAllProducts = tempAllProducts.filter((product) => {
