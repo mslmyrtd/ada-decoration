@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../auth/firebase-config";
 import { Wrapper } from '../styles/common'
+import { toast } from "react-toastify"
 
 
 const LoginPage = () => {
@@ -11,6 +12,9 @@ const LoginPage = () => {
     const [password, setPassword] = useState();
     const handleSubmit = async () => {
         try {
+            if (!email || !password) {
+                toast.warning("Please fill out all fields")
+            }
             let user = await signInWithEmailAndPassword(auth, email, password);
             navigate("/");
         } catch (err: any) {

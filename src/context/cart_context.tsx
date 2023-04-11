@@ -2,7 +2,6 @@ import React, { useEffect, useContext, useReducer, MouseEvent } from 'react'
 import reducer from '../reducers/cart_reducer'
 import { InputProviderProps, FilterActionKind } from '../types/globaltypes.types'
 
-
 export type InitialStateType = {
     cart: Record<string | number, undefined>[],
     total_items: number,
