@@ -155,6 +155,9 @@ p {
     transform: rotate(360deg);
   }
 }
+.full-page {
+  min-height: 100vh;
+}
 
 .loading {
   width: 6rem;

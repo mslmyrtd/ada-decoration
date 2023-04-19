@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Wrapper } from '../styles/common'
 import { Link, useNavigate } from 'react-router-dom';
 import { createUserWithEmailAndPassword, updateProfile, GoogleAuthProvider } from "firebase/auth";
@@ -19,9 +19,12 @@ const Signup = () => {
             if (!email || !password || !name) {
                 toast.warning("Please fill out all fields")
             }
-            let user = await createUserWithEmailAndPassword(auth, email, password);
-            await updateProfile(auth.currentUser, { displayName: displayName });
-            navigate("/");
+            else {
+                let user = await createUserWithEmailAndPassword(auth, email, password);
+                await updateProfile(auth.currentUser, { displayName: displayName });
+                navigate("/")
+            }
+            ;
         } catch (err: any) {
             alert(err.message);
         }

@@ -15,8 +15,11 @@ const LoginPage = () => {
             if (!email || !password) {
                 toast.warning("Please fill out all fields")
             }
-            let user = await signInWithEmailAndPassword(auth, email, password);
-            navigate("/");
+            else {
+                let user = await signInWithEmailAndPassword(auth, email, password);
+                navigate("/");
+            }
+
         } catch (err: any) {
             alert(err.message);
         }
